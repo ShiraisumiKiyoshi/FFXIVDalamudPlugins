@@ -1,0 +1,17 @@
+## Dalamud plugin build outputs
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.idea/
+
+## Build artifacts
+*.zip
+Release/
+Debug/
+
+## IDE
+*.swp
+*~
+.DS_Store

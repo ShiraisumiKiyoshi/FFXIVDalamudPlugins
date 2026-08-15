@@ -1,0 +1,25 @@
+{
+  "Author": "白泉澈",
+  "Name": "FreeAction",
+  "Punchline": "可自定义技能轴的自动循环插件",
+  "Description": "通用框架，支持 JSON / GUI 双模式自定义技能轴，ActionManager 调用技能，按职业切换配置。",
+  "InternalName": "FreeAction",
+  "AssemblyVersion": "1.0.0.0",
+  "DalamudApiLevel": 15,
+  "UpdateUrl": "https://shiraisumikiyoshi.github.io/FreeAction/repo.json",
+  "IsHide": false,
+  "IsTestingExclusive": false,
+  "ApplicableVersion": "any",
+  "RepoApiLevel": 15,
+  "Tags": [
+    "rotation",
+    "auto",
+    "combat"
+  ],
+  "LoadPriority": 0,
+  "ImageUrls": [
+    "https://shiraisumikiyoshi.github.io/FreeAction/FreeAction/icon.png"
+  ],
+  "IconUrl": "https://shiraisumikiyoshi.github.io/FreeAction/FreeAction/icon.png",
+  "AcceptsFeedback": true
+}

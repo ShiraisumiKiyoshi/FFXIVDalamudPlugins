@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Version>1.0.0.0</Version>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <!--
+      Dalamud 库路径。默认为 XIVLauncher 标准位置：
+        %AppData%\XIVLauncher\addon\Hooks\dev\
+      若你的安装位置不同，可在环境变量设置 DalamudLibPath，或在下方 DalamudLibPath 节点直接改路径。
+    -->
+    <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(MSBuildThisFileDirectory)lib\dalamud\</DalamudLibPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="FreeAction.json" />
+    <EmbeddedResource Include="FreeAction.json" />
+    <Content Include="FreeAction.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- DalamudPackager：负责打包为可分发的 zip（含 repo.json） -->
+  <ItemGroup>
+    <PackageReference Include="DalamudPackager" Version="2.1.13" />
+  </ItemGroup>
+  <PropertyGroup>
+    <DalamudPackagerCleanAfterPack>false</DalamudPackagerCleanAfterPack>
+  </PropertyGroup>
+
+  <!--
+    引用 XIVLauncher 提供的 Dalamud 运行时 DLL。
+    Private=false 表示不把这些 DLL 复制到输出目录（运行时由 Dalamud 进程提供）。
+  -->
+  <ItemGroup>
+    <Reference Include="Dalamud">
+      <HintPath>$(DalamudLibPath)Dalamud.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Dalamud.Bindings.ImGui">
+      <HintPath>$(DalamudLibPath)Dalamud.Bindings.ImGui.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Lumina">
+      <HintPath>$(DalamudLibPath)Lumina.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Lumina.Excel">
+      <HintPath>$(DalamudLibPath)Lumina.Excel.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="FFXIVClientStructs">
+      <HintPath>$(DalamudLibPath)FFXIVClientStructs.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="InteropGenerator.Runtime">
+      <HintPath>$(DalamudLibPath)InteropGenerator.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
