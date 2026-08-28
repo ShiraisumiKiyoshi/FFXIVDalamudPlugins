@@ -11,6 +11,10 @@ obj/
 Release/
 Debug/
 
+## Plugin repo distribution (docs/ is served as online plugin repo)
+!docs/**
+!docs/**/*.zip
+
 ## IDE
 *.swp
 *~
