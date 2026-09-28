@@ -5,7 +5,7 @@
     "InternalName": "MyTools",
     "Punchline": "工具合集：镜头同步 / 悬浮窗控制 / 自动魂武",
     "Description": "工具合集。① 镜头同步：角色面向与镜头方向实时同步，战斗中自动解除技能面向锁定。② 悬浮窗：眼睛按钮一键开关（左键开关/右键设置/按住拖动），位置、大小、透明度、锁定均可自定义。③ 自动魂武：按职业扫描装备/兵装库/背包/陆行鸟背包/雇员中的元灵武器，展示各职业当前阶段；一键执行该职业的魂武任务流程——自动接取未接任务、vnavmesh 寻路找 NPC 对话、副本任务解限进入、刷光阶段自动循环天动之章1，支持随时暂停与停止。",
-    "Changelog": "v1.2.4：修复 boss 战仍不靠近的问题——AutoDuty 的 IsNavigating 在整个副本运行期间都为 true，v1.2.3 以它作为\"正在跑图\"的判断把靠近逻辑挡死了；现改为「玩家静止 ≥1.2 秒且敌对目标超距」时接管靠近，跑图期间角色持续移动不会误触发；当前目标放宽为只需存活战斗 NPC；靠近时写 [Anima] 调试日志。\nv1.2.3：副本内 boss 战自动靠近——与敌对目标距离超出近战范围时自动用 vnavmesh 靠近到可输出距离（约 3.4y），目标移动会自动重新寻路。\nv1.2.2：修正「人造元灵终绽放」阶段判定——按 67933 接取状态与背包中的新生魂石自动区分子阶段；进入副本后自动调用 AutoDuty 跑图；刷光完成后自动回去找盖罗尔特交付。\nv1.2.1：修复任务已接取却被误判为未接取（任务 ID 需用低 16 位内部 ID）；修复「先接取任务」状态未接入主循环导致角色原地不动；自动点击补上任务接受弹窗。\nv1.2.0：自动魂武按原型重做——新增职业卡片视图；按职业执行流程，同一时间仅运行一个职业；执行前先判断任务是否已接取。\nv1.1.1：修复更新后无法加载的问题（不再打包 Dalamud 自带的依赖副本）。\nv1.1.0：新增「自动魂武」功能。",
+    "Changelog": "v1.2.5：刷光不再依赖固定次数——监听聊天栏「<武器名>中的人造元灵灵魂完全凝聚了！」（武器名可变，只匹配固定短语），出现即判定刷光完成并自动回去交付；原次数设置改为保险上限（默认 60，防止漏判消息时无限循环）；修复界面中魂武图标纹理被释放后的崩溃。\nv1.2.4：修复 boss 战仍不靠近的问题——AutoDuty 的 IsNavigating 在整个副本运行期间都为 true，改用「玩家静止 ≥1.2 秒且敌对目标超距」判定接管。\nv1.2.3：副本内 boss 战自动靠近——与敌对目标距离超出近战范围时自动用 vnavmesh 靠近。\nv1.2.2：修正「人造元灵终绽放」阶段判定——按子步骤信号自动区分三迷宫/结晶/刷光；进入副本后自动调用 AutoDuty 跑图。\nv1.2.1：修复任务已接取却被误判为未接取；修复「先接取任务」状态未接入主循环导致角色原地不动。\nv1.2.0：自动魂武按原型重做——职业卡片视图、按职业执行、执行前先接取任务。\nv1.1.1：修复更新后无法加载的问题。\nv1.1.0：新增「自动魂武」功能。",
     "Tags": [
       "utility",
       "camera",
@@ -14,7 +14,7 @@
     ],
     "IsHide": false,
     "IsTestingExclusive": false,
-    "AssemblyVersion": "1.2.4.0",
+    "AssemblyVersion": "1.2.5.0",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/ShiraisumiKiyoshi/FFXIVDalamudPlugins",
@@ -24,6 +24,6 @@
     "DownloadLinkUpdate": "https://raw.githubusercontent.com/ShiraisumiKiyoshi/FFXIVDalamudPlugins/main/docs/MyTools/latest.zip",
     "DownloadLinkTesting": "",
     "AcceptsFeedback": true,
-    "LastUpdate": 1790606480
+    "LastUpdate": 1790607074
   }
 ]
