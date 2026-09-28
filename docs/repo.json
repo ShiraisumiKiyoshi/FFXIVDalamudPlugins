@@ -3,16 +3,18 @@
     "Author": "白泉澈",
     "Name": "MyTools",
     "InternalName": "MyTools",
-    "Punchline": "工具合集：角色面向与镜头方向同步",
-    "Description": "将角色面向与镜头方向实时同步，战斗中自动解除技能面向锁定；带眼睛按钮悬浮窗（左键开关/右键设置/按住拖动），悬浮窗位置、大小、透明度、锁定均可自定义。更多工具功能持续更新中。",
-    "Changelog": "v1.0.1：修复插件图标显示、悬浮窗拖拽、战斗中技能面向后不恢复镜头同步的问题",
+    "Punchline": "工具合集：镜头同步 / 悬浮窗控制 / 自动魂武",
+    "Description": "工具合集。① 镜头同步：角色面向与镜头方向实时同步，战斗中自动解除技能面向锁定。② 悬浮窗：眼睛按钮一键开关（左键开关/右键设置/按住拖动），位置、大小、透明度、锁定均可自定义。③ 自动魂武（v1.1.0 新增）：备齐材料后自动完成元灵武器任务全流程——检测背包魂武判断当前阶段、vnavmesh 自动寻路找 NPC 对话、副本任务解限进入、刷光阶段自动循环天动之章1，支持随时暂停与停止。",
+    "Changelog": "v1.1.0：新增「自动魂武」功能（阶段检测 / 自动寻路对话 / 解限进本 / 刷光循环 / 暂停停止）；同时精简发布包，移除随 Dalamud 运行时自带的 TerraFX 程序集，安装包体积由约 10MB 降至约 0.7MB。",
     "Tags": [
       "utility",
-      "camera"
+      "camera",
+      "automation",
+      "quest"
     ],
     "IsHide": false,
     "IsTestingExclusive": false,
-    "AssemblyVersion": "1.0.1.0",
+    "AssemblyVersion": "1.1.0.0",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/ShiraisumiKiyoshi/FFXIVDalamudPlugins",
@@ -22,6 +24,6 @@
     "DownloadLinkUpdate": "https://raw.githubusercontent.com/ShiraisumiKiyoshi/FFXIVDalamudPlugins/main/docs/MyTools/latest.zip",
     "DownloadLinkTesting": "",
     "AcceptsFeedback": true,
-    "LastUpdate": 1787920773
+    "LastUpdate": 1790589600
   }
 ]
