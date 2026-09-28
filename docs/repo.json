@@ -4,8 +4,8 @@
     "Name": "MyTools",
     "InternalName": "MyTools",
     "Punchline": "工具合集：镜头同步 / 悬浮窗控制 / 自动魂武",
-    "Description": "工具合集。① 镜头同步：角色面向与镜头方向实时同步，战斗中自动解除技能面向锁定。② 悬浮窗：眼睛按钮一键开关（左键开关/右键设置/按住拖动），位置、大小、透明度、锁定均可自定义。③ 自动魂武（v1.1.0 新增）：备齐材料后自动完成元灵武器任务全流程——检测背包魂武判断当前阶段、vnavmesh 自动寻路找 NPC 对话、副本任务解限进入、刷光阶段自动循环天动之章1，支持随时暂停与停止。",
-    "Changelog": "v1.1.1：修复 v1.1.0 更新后插件无法加载的问题。原因是发布包误带了 Dalamud 运行时自带的 Serilog / Newtonsoft.Json / HexaGen.Runtime 副本，插件加载上下文会加载出第二份同名程序集，即使文件字节相同，类型标识也不一致，导致 ECommons 初始化抛出 MissingMethodException（IPluginLog.set_MinimumLogLevel）而加载失败。现已改为只打包插件本体 + ECommons.dll，安装包 340KB。\nv1.1.0：新增「自动魂武」功能（阶段检测 / 自动寻路对话 / 解限进本 / 刷光循环 / 暂停停止）。",
+    "Description": "工具合集。① 镜头同步：角色面向与镜头方向实时同步，战斗中自动解除技能面向锁定。② 悬浮窗：眼睛按钮一键开关（左键开关/右键设置/按住拖动），位置、大小、透明度、锁定均可自定义。③ 自动魂武：按职业扫描装备/兵装库/背包/陆行鸟背包/雇员中的元灵武器，展示各职业当前阶段；一键执行该职业的魂武任务流程——自动接取未接任务、vnavmesh 寻路找 NPC 对话、副本任务解限进入、刷光阶段自动循环天动之章1，支持随时暂停与停止。",
+    "Changelog": "v1.2.0：自动魂武按原型重做——新增职业卡片视图（检测按钮扫描装备中/兵装库/背包/陆行鸟背包/雇员中的魂武，按职业展示持有武器图标与当前任务阶段）；按职业执行流程，同一时间仅运行一个职业；执行前先判断任务是否已接取，未接取自动寻路接取后再继续；阶段推进改为按任务日志判定。\nv1.1.1：修复更新后无法加载的问题（不再打包 Dalamud 自带的依赖副本）。\nv1.1.0：新增「自动魂武」功能。",
     "Tags": [
       "utility",
       "camera",
@@ -14,7 +14,7 @@
     ],
     "IsHide": false,
     "IsTestingExclusive": false,
-    "AssemblyVersion": "1.1.1.0",
+    "AssemblyVersion": "1.2.0.0",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/ShiraisumiKiyoshi/FFXIVDalamudPlugins",
@@ -24,6 +24,6 @@
     "DownloadLinkUpdate": "https://raw.githubusercontent.com/ShiraisumiKiyoshi/FFXIVDalamudPlugins/main/docs/MyTools/latest.zip",
     "DownloadLinkTesting": "",
     "AcceptsFeedback": true,
-    "LastUpdate": 1790590328
+    "LastUpdate": 1790594598
   }
 ]
