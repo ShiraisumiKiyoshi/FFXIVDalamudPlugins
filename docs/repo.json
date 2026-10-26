@@ -5,7 +5,7 @@
     "InternalName": "MyTools",
     "Punchline": "工具合集：镜头同步 / 悬浮窗控制 / 自动魂武 / 自动挖宝",
     "Description": "工具合集。① 镜头同步：角色面向与镜头方向实时同步，战斗中自动解除技能面向锁定。② 悬浮窗：眼睛按钮一键开关（左键开关/右键设置/按住拖动），位置、大小、透明度、锁定均可自定义。③ 自动魂武：按职业扫描装备/兵装库/背包/陆行鸟背包/雇员中的元灵武器，展示各职业当前阶段；一键执行该职业的魂武任务流程——自动接取未接任务、vnavmesh 寻路找 NPC 对话、副本任务解限进入、刷光阶段自动循环天动之章1，支持随时暂停与停止。④ 自动挖宝：G18 卡冈图亚革 8 人小队轮挖——交易板自动购买并解读藏宝图，全员装插件通过小队聊天同步轮次与排序，行动者用图广播坐标后自动传送最近水晶、vnavmesh 寻路挖掘、战斗自动开 RSR/BMR、宝箱魔纹副本自动互动并退本，挖满设定轮次自动结束。",
-    "Changelog": "v1.4.1：修复群内 @机器人 发【/在线】没有任何回复。\n1) 根因：NapCat 的 HTTP 事件上报（httpClients）不带 Authorization 头，而是用 x-signature = sha1=HMAC-SHA1(token, body) 校验；插件原来按 Bearer 校验，导致每条上报都被判为鉴权失败、指令全部丢弃。\n2) 现在同时支持 Authorization（Bearer/Token/裸值）与 x-signature 签名校验；两者都没有时按 127.0.0.1 本机回环放行。\n3) 根因二：NapCat 上报走 transfer-encoding: chunked（Node 未设 Content-Length），旧代码按 Content-Length 读 body，读不到完整 JSON（中文消息还会错位）。现已支持分块解码，body 按原始字节参与签名计算。\n4) 收到 /在线 时新增日志：会打印群号与是否 @机器人；忘记 @ 或群号未绑定分组都会明确提示。",
+    "Changelog": "v1.4.2：修复 /在线 指令收到但不发名单（分组推送地址为空被静默跳过）。\n1) 根因：分组配置里 Webhook 地址为空、请求体 group_id 还是占位 0，推送环节直接 return，且没有任何日志。\n2) 推送地址改为发送时动态解析：分组自填地址 → 旧版遗留地址 → 机器人 HTTP 接口（自动用接口端口/token 拼 /send_group_msg）；webhook 留空也能直接发。\n3) 请求体里的 group_id:0 会自动替换成该分组自己的群号，不再需要手填。\n4) 新增「发送接口端口 / 接口 token」设置项（默认 3000，token 留空则复用上报 token）。\n5) 推送成功会写日志「已推送到群 xxx」，失败/无目标都有明确警告；/在线 名单与快照人数也会记录，便于排障。",
     "Tags": [
       "utility",
       "camera",
@@ -15,7 +15,7 @@
     ],
     "IsHide": false,
     "IsTestingExclusive": false,
-    "AssemblyVersion": "1.4.1.0",
+    "AssemblyVersion": "1.4.2.0",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/ShiraisumiKiyoshi/FFXIVDalamudPlugins",
@@ -25,6 +25,6 @@
     "DownloadLinkUpdate": "https://raw.githubusercontent.com/ShiraisumiKiyoshi/FFXIVDalamudPlugins/main/docs/MyTools/latest.zip",
     "DownloadLinkTesting": "",
     "AcceptsFeedback": true,
-    "LastUpdate": 1793011265
+    "LastUpdate": 1793011827
   }
 ]
